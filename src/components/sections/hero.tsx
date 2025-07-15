@@ -50,7 +50,7 @@ export function HeroSection() {
               <Button
                 onClick={() => scrollToSection("#projects")}
                 size="lg"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground hover-glow"
+                className="bg-gradient-start hover:bg-gradient-start/90 text-primary-foreground hover-glow"
               >
                 View My Work
                 <ArrowDown className="ml-2 h-5 w-5" />

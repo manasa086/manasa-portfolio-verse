@@ -217,7 +217,7 @@ export function ContactSection() {
                 <Button 
                   type="submit" 
                   disabled={isSubmitting}
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground hover-glow"
+                  className="w-full bg-gradient-start hover:bg-gradient-start/90 text-primary-foreground hover-glow"
                 >
                   {isSubmitting ? (
                     <>

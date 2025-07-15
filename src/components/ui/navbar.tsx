@@ -76,7 +76,7 @@ export function Navbar({ className }: NavbarProps) {
           <div className="hidden md:block">
             <Button
               onClick={() => scrollToSection("#contact")}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground hover-glow"
+              className="bg-gradient-start hover:bg-gradient-start/90 text-primary-foreground hover-glow"
             >
               Let's Connect
             </Button>
@@ -113,7 +113,7 @@ export function Navbar({ className }: NavbarProps) {
               ))}
               <Button
                 onClick={() => scrollToSection("#contact")}
-                className="w-full mt-4 bg-primary hover:bg-primary/90 text-primary-foreground"
+                className="w-full mt-4 bg-gradient-start hover:bg-gradient-start/90 text-primary-foreground"
               >
                 Let's Connect
               </Button>

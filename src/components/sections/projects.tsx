@@ -190,7 +190,7 @@ export function ProjectsSection() {
                       </Button>
                     )}
                     {project.liveUrl && (
-                      <Button size="sm" className="flex-1 bg-primary hover:bg-primary/90">
+                      <Button size="sm" className="flex-1 bg-gradient-start hover:bg-gradient-start/90">
                         <ExternalLink className="mr-2 h-4 w-4" />
                         Live Demo
                       </Button>

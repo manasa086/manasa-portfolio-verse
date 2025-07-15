@@ -181,7 +181,7 @@ export function ServicesSection() {
             <Button 
               onClick={scrollToContact}
               size="lg" 
-              className="bg-primary hover:bg-primary/90 text-primary-foreground hover-glow"
+              className="bg-gradient-start hover:bg-gradient-start/90 text-primary-foreground hover-glow"
             >
               Get In Touch
               <ArrowRight className="ml-2 h-5 w-5" />
