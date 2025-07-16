@@ -31,7 +31,7 @@ const services: Service[] = [
       "Performance optimization",
       "Cross-browser compatibility"
     ],
-    technologies: ["React", "Node.js", "MongoDB", "PostgreSQL"]
+    technologies: ["React", "Node.js", "MongoDB"]
   },
   {
     title: "Frontend Development",
@@ -57,7 +57,7 @@ const services: Service[] = [
       "Server architecture",
       "Third-party integrations"
     ],
-    technologies: ["Node.js", "PHP", "Express.js", "MySQL", "MongoDB"]
+    technologies: ["Node.js", "PHP", "MySQL", "MongoDB"]
   },
   {
     title: "API Integration & Development",
@@ -70,7 +70,7 @@ const services: Service[] = [
       "API documentation",
       "Error handling & validation"
     ],
-    technologies: ["Node.js", "Express", "Postman", "JWT", "OAuth"]
+    technologies: ["Node.js", "Postman", "JWT", "OAuth"]
   },
   {
     title: "Database Solutions",
@@ -83,7 +83,7 @@ const services: Service[] = [
       "Performance tuning",
       "Backup & recovery"
     ],
-    technologies: ["MySQL", "MongoDB", "PostgreSQL", "Redis"]
+    technologies: ["MySQL", "MongoDB", "Redis"]
   },
   {
     title: "Cloud Deployment",
@@ -91,12 +91,11 @@ const services: Service[] = [
     icon: Cloud,
     features: [
       "AWS deployment",
-      "CI/CD pipeline setup",
       "Performance monitoring",
       "Auto-scaling configuration",
       "Security implementation"
     ],
-    technologies: ["AWS", "Git", "GitHub Actions", "Docker"]
+    technologies: ["AWS", "Git", "GitHub Actions"]
   }
 ];
 

@@ -28,7 +28,7 @@ const projects: Project[] = [
     description: "Comprehensive customer relationship management system with advanced analytics and reporting.",
     longDescription: "Built a full-featured CRM system that helps businesses manage customer interactions, track sales pipelines, and generate detailed analytics reports. Implemented user authentication, role-based access control, and real-time notifications.",
     icon: Users,
-    technologies: ["React", "Node.js", "MongoDB", "Express.js", "JWT"],
+    technologies: ["React", "Node.js", "MongoDB", "JWT"],
     features: [
       "Customer data management",
       "Sales pipeline tracking", 

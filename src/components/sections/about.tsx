@@ -137,7 +137,7 @@ export function AboutSection() {
               
               <Card className="glass-card">
                 <CardContent className="p-4 text-center">
-                  <div className="text-2xl font-bold text-primary mb-1">15+</div>
+                  <div className="text-2xl font-bold text-primary mb-1">10+</div>
                   <div className="text-sm text-muted-foreground">Technologies</div>
                 </CardContent>
               </Card>

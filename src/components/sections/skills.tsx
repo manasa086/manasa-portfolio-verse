@@ -28,13 +28,13 @@ const skillCategories: SkillCategory[] = [
   {
     title: "Backend Development", 
     icon: Terminal,
-    skills: ["Node.js", "PHP", "RESTful APIs", "Express.js", "Server Architecture"],
+    skills: ["Node.js", "PHP", "RESTful APIs", "Server Architecture"],
     color: "text-green-500"
   },
   {
     title: "Databases",
     icon: Database,
-    skills: ["MySQL", "MongoDB", "PostgreSQL", "Database Design", "Query Optimization"],
+    skills: ["MySQL", "MongoDB", "Database Design", "Query Optimization"],
     color: "text-purple-500"
   },
   {
@@ -46,13 +46,13 @@ const skillCategories: SkillCategory[] = [
   {
     title: "Cloud & DevOps",
     icon: Cloud,
-    skills: ["AWS", "Git", "GitHub", "Version Control", "CI/CD"],
+    skills: ["AWS", "Git", "GitHub", "Version Control"],
     color: "text-cyan-500"
   },
   {
     title: "Tools & Frameworks",
     icon: Settings,
-    skills: ["React", "Redux", "Express", "Git", "npm", "VS Code"],
+    skills: ["React", "Redux", "Git", "npm", "VS Code"],
     color: "text-red-500"
   }
 ];
@@ -110,7 +110,7 @@ export function SkillsSection() {
               { skill: "React & JavaScript", level: 95 },
               { skill: "Node.js & Backend", level: 90 },
               { skill: "Database Management", level: 85 },
-              { skill: "Cloud & DevOps", level: 80 }
+              { skill: "Cloud & DevOps", level: 65 }
             ].map((item, index) => (
               <Card key={index} className="glass-card">
                 <CardContent className="p-6">

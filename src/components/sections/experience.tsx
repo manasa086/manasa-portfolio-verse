@@ -20,7 +20,7 @@ const experiences: ExperienceItem[] = [
     duration: "Apr 2021 – Dec 2024",
     achievements: [
       "Developed and maintained dynamic, responsive web applications using React, Redux, and Node.js",
-      "Implemented efficient database solutions with MySQL, MongoDB, and PostgreSQL",
+      "Implemented efficient database solutions with MySQL, and MongoDB",
       "Collaborated with cross-functional teams to deliver high-quality software solutions",
       "Optimized application performance resulting in 40% faster load times",
       "Mentored junior developers and conducted code reviews to maintain code quality",
