@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Github, Linkedin, Mail, ArrowDown, Download } from "lucide-react";
-import profilePicture from "@/assets/profile-picture.jpg";
 
 export function HeroSection() {
   const scrollToSection = (href: string) => {
@@ -19,8 +18,7 @@ export function HeroSection() {
       <div className="absolute bottom-1/4 left-1/4 w-48 h-48 bg-accent/10 rounded-full blur-3xl" />
       
       <div className="container-custom relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
+        <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
           <div className="space-y-8">
             <div className="space-y-4">
               <Badge variant="secondary" className="w-fit">
@@ -38,7 +36,7 @@ export function HeroSection() {
                 Full-Stack Developer | MS in CS | Passionate About Building Scalable Web Applications
               </p>
               
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
                 Former Software Engineer with 5+ years of professional experience developing 
                 dynamic, responsive web applications. Currently pursuing MS in Computer Science 
                 at California State University, East Bay.
@@ -46,7 +44,7 @@ export function HeroSection() {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 onClick={() => scrollToSection("#projects")}
                 size="lg"
@@ -67,7 +65,7 @@ export function HeroSection() {
             </div>
 
             {/* Social Links */}
-            <div className="flex gap-4">
+            <div className="flex gap-4 justify-center">
               <Button variant="ghost" size="icon" className="hover:bg-secondary">
                 <Github className="h-5 w-5" />
               </Button>
@@ -77,37 +75,6 @@ export function HeroSection() {
               <Button variant="ghost" size="icon" className="hover:bg-secondary">
                 <Mail className="h-5 w-5" />
               </Button>
-            </div>
-          </div>
-
-          {/* Right Content - Profile Image */}
-          <div className="flex justify-center lg:justify-end">
-            <div className="relative">
-              {/* Decorative elements */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-2xl" />
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-full" />
-              
-              {/* Profile Image */}
-              <div className="relative w-80 h-80 rounded-full overflow-hidden border-4 border-primary/20 hover-glow">
-                <img
-                  src={profilePicture}
-                  alt="Manasa Somisetty - Full Stack Developer"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              
-              {/* Floating badges */}
-              <div className="absolute -top-4 -right-4">
-                <Badge className="bg-primary text-primary-foreground shadow-lg">
-                  5+ Years Experience
-                </Badge>
-              </div>
-              
-              <div className="absolute -bottom-4 -left-4">
-                <Badge variant="secondary" className="shadow-lg">
-                  MS in CS Student
-                </Badge>
-              </div>
             </div>
           </div>
         </div>
