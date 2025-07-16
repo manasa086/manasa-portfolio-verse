@@ -19,31 +19,51 @@ const experiences: ExperienceItem[] = [
     location: "Bengaluru, India",
     duration: "Apr 2021 – Dec 2024",
     achievements: [
-      "Developed and maintained dynamic, responsive web applications using React, Redux, and Node.js",
-      "Implemented efficient database solutions with MySQL, and MongoDB",
-      "Collaborated with cross-functional teams to deliver high-quality software solutions",
-      "Optimized application performance resulting in 40% faster load times",
-      "Mentored junior developers and conducted code reviews to maintain code quality",
-      "Integrated third-party APIs and services to enhance application functionality"
+      `Revamped the assessment workflow, enhancing user experience by 65% and increasing productivity by 50%.`,
+      `Designed a scalable dynamic assessment module, enabling on-demand creation based on client criteria, reducing setup time by 60% and boosting client satisfaction by 40%.`,
+      `Integrated a Nurse Skill Checklist into Glider.ai's ChatBot, enhancing recruiter experience and boosting screening efficiency by 50% through full-stack development.`,
+      `Developed RESTful APIs to integrate Bullhorn, Lever, and LiveHire into the Glider.ai platform, enabling
+      seamless access to core functionalities`,
+      `Built a full-stack L&D application for enterprise clients like Intuit, improving employee efficiency and streamlining training workflows by 50% through cross-functional collaboration.`,
+      `Implemented robust role-based access control (RBAC) across the Learning and Development application,
+      enhancing security and reducing unauthorized access vulnerabilities`,
     ],
-    technologies: ["React", "Redux", "Node.js", "JavaScript", "MySQL", "MongoDB", "AWS"]
+    technologies: [
+      "React",
+      "Redux",
+      "Meteor.js",
+      "Node.js",
+      "HTML5",
+      "CSS",
+      "Java",
+      "JavaScript",
+      "MySQL",
+      "MongoDB",
+      "AWS",
+      "Git",
+    ],
   },
   {
     title: "Systems Engineer",
     company: "Infosys",
-    location: "Bengaluru, India", 
+    location: "Bengaluru, India",
     duration: "Aug 2019 – Sep 2020",
     achievements: [
-      "Built responsive web interfaces using HTML5, CSS3, JavaScript, and jQuery",
-      "Developed backend services using PHP and integrated with various databases",
-      "Participated in full software development lifecycle from requirement analysis to deployment",
-      "Collaborated with international clients to understand and implement business requirements",
-      "Maintained and enhanced existing applications to improve user experience",
-      "Gained expertise in version control using Git and GitHub"
+      "Troubleshooted exact issues by analyzing all the DB logs, server logs, and network logs",
+      "Fine tuned the DB queries which enhanced 70% database performance.",
     ],
-    technologies: ["HTML5", "CSS3", "JavaScript", "jQuery", "PHP", "MySQL", "Git"]
-  }
+    technologies: [
+      "Oracle DB",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "jQuery",
+      "PHP",
+      "MySQL",
+    ],
+  },
 ];
+
 
 export function ExperienceSection() {
   return (

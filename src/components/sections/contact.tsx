@@ -54,32 +54,32 @@ export function ContactSection() {
     {
       icon: Mail,
       label: "Email",
-      value: "manasa.somisetty@example.com",
-      href: "mailto:manasa.somisetty@example.com"
+      value: "manasa.somisetty06@gmail.com",
+      href: "mailto:manasa.somisetty06@gmail.com"
     },
     {
       icon: Phone,
       label: "Phone",
-      value: "+1 (555) 123-4567",
+      value: "+1 (650) 441-6868",
       href: "tel:+15551234567"
     },
     {
       icon: MapPin,
       label: "Location",
-      value: "California, USA",
+      value: "Sunnyvale, California, USA",
       href: "#"
     },
     {
       icon: Linkedin,
       label: "LinkedIn",
       value: "linkedin.com/in/manasa-somisetty",
-      href: "https://linkedin.com/in/manasa-somisetty"
+      href: "https://www.linkedin.com/in/manasa-somisetty"
     },
     {
       icon: Github,
       label: "GitHub",
       value: "github.com/manasa-somisetty",
-      href: "https://github.com/manasa-somisetty"
+      href: "https://github.com/manasa086"
     }
   ];
 

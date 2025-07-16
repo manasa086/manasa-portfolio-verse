@@ -14,40 +14,34 @@ export function AboutSection() {
               <Badge variant="outline" className="mb-4">
                 About Me
               </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Bridging Industry Experience with{" "}
-                <span className="gradient-text">Academic Excellence</span>
+              <h2 className="md:text-3xl font-bold mb-6">
+                Integrating Real-World Expertise with Academic Insight
               </h2>
             </div>
             
             <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
               <p>
-                I'm a dedicated full-stack developer with over 5 years of professional 
+                I'm a dedicated full-stack developer with over <span className="gradient-text">5+ years of professional</span> 
                 experience in building scalable web applications. My journey began at 
-                Infosys as a Systems Engineer, where I honed my foundational skills, 
-                and continued at Glider.ai, where I specialized in developing dynamic, 
+                <span className="gradient-text">Infosys as a Systems Engineer</span>, where I honed my foundational skills, 
+                and continued at <span className="gradient-text">Glider.ai as Software Engineer</span>, where I specialized in developing dynamic, 
                 responsive solutions.
               </p>
               
               <p>
-                Currently pursuing my Master's in Computer Science at California State 
-                University, East Bay, I'm combining my industry expertise with cutting-edge 
+                Currently pursuing my <span className="gradient-text">Master's in Computer Science at California State 
+                University, East Bay</span>, I'm combining my industry expertise with cutting-edge 
                 academic knowledge. I'm passionate about creating efficient, user-centric 
                 applications that solve real-world problems.
               </p>
               
               <p>
-                My experience spans across various technologies including React, Node.js, 
-                PHP, and cloud platforms. I'm now seeking internship opportunities where 
+                My experience spans across various technologies including <span className="gradient-text">React, Meteor.js, Node.js, Java,
+                PHP, and cloud platforms</span>. I'm now seeking internship opportunities where 
                 I can contribute my professional background while gaining new perspectives 
                 in emerging technologies.
               </p>
             </div>
-
-            <Button variant="outline" className="border-primary text-primary hover:bg-primary/10">
-              <Download className="mr-2 h-5 w-5" />
-              Download Full Resume
-            </Button>
           </div>
 
           {/* Right Content - Education Cards */}

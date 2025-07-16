@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Github, Linkedin, Mail, ArrowDown, Download } from "lucide-react";
+import { Mail, ArrowDown, Download } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export function HeroSection() {
   const scrollToSection = (href: string) => {
@@ -8,6 +9,26 @@ export function HeroSection() {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const handleCopy = () => {
+    const text = "manasa.somisetty06@gmail.com";
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        alert("Text copied to clipboard!");
+      })
+      .catch((err) => {
+        console.error("Failed to copy: ", err);
+      });
+  };
+
+  const navigateToGitHub = () => {
+    window.open("https://github.com/manasa086", "_blank");
+  };
+
+  const navigateToLinkedIn = () => {
+    window.open("https://www.linkedin.com/in/manasa-somisetty", "_blank");
   };
 
   return (
@@ -21,10 +42,22 @@ export function HeroSection() {
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
           <div className="space-y-8">
             <div className="space-y-4">
-              <Badge variant="secondary" className="w-fit">
+              <Badge
+                variant="secondary"
+                className="bg-primary text-primary-foreground mr-1.5"
+              >
                 Available for Internships
               </Badge>
-              
+              <Badge className="bg-primary text-primary-foreground shadow-lg mr-1.5">
+                5+ Years Experience
+              </Badge>
+
+              <Badge
+                variant="secondary"
+                className="bg-primary text-primary-foreground"
+              >
+                MS in CS Student
+              </Badge>
               <h1 className="text-4xl md:text-6xl font-bold leading-tight">
                 Hi, I'm{" "}
                 <span className="gradient-text">
@@ -60,19 +93,36 @@ export function HeroSection() {
                 className="border-border hover:bg-secondary"
               >
                 <Download className="mr-2 h-5 w-5" />
-                Download Resume
+                <a href="/Manasa_resume.pdf" download>
+                  <button>Download Resume</button>
+                </a>
               </Button>
             </div>
 
             {/* Social Links */}
             <div className="flex gap-4 justify-center">
-              <Button variant="ghost" size="icon" className="hover:bg-secondary">
-                <Github className="h-5 w-5" />
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hover:bg-secondary"
+                onClick={navigateToGitHub}
+              >
+                <FaGithub className="h-5 w-5" />
               </Button>
-              <Button variant="ghost" size="icon" className="hover:bg-secondary">
-                <Linkedin className="h-5 w-5" />
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={navigateToLinkedIn}
+                className="hover:bg-secondary"
+              >
+                <FaLinkedin className="h-5 w-5" />
               </Button>
-              <Button variant="ghost" size="icon" className="hover:bg-secondary">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hover:bg-secondary"
+                onClick={handleCopy}
+              >
                 <Mail className="h-5 w-5" />
               </Button>
             </div>
