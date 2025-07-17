@@ -14,7 +14,6 @@ export default defineConfig(({ mode }) => ({
     mode === 'development' &&
     componentTagger(),
   ].filter(Boolean),
-  base:"/manasa-portfolio-verse",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
