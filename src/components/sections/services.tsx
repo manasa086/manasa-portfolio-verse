@@ -170,12 +170,9 @@ export function ServicesSection() {
         {/* CTA Section */}
         <Card className="glass-card bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20">
           <CardContent className="p-8 text-center">
-            <h3 className="text-2xl font-bold mb-4">
-              Ready to Start Your Project?
-            </h3>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
               Let's collaborate to bring your ideas to life. I'm currently available 
-              for internships and freelance projects.
+              for internships.
             </p>
             <Button 
               onClick={scrollToContact}

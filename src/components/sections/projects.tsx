@@ -257,25 +257,6 @@ export function ProjectsSection() {
             </Card>
           ))}
         </div>
-
-        {/* GitHub CTA */}
-        <div className="text-center mt-12">
-          <Card className="glass-card inline-block">
-            <CardContent className="p-6">
-              <Github className="h-8 w-8 text-muted-foreground mx-auto mb-3" />
-              <h3 className="font-semibold mb-2">More Projects on GitHub</h3>
-              <Button
-                variant="outline"
-                className="border-primary text-primary hover:bg-primary/10" onClick={() =>
-                  navigateToProjectOrGitHub("https://github.com/manasa086")
-                }
-              >
-                <FaGithub className="h-5 w-5" />
-                View GitHub Profile
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
       </div>
     </section>
   );

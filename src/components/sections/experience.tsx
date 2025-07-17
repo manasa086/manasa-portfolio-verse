@@ -121,7 +121,7 @@ export function ExperienceSection() {
                           {exp.achievements.map((achievement, i) => (
                             <li key={i} className="flex items-start gap-3 text-muted-foreground">
                               <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0" />
-                              <span className="text-sm leading-relaxed">{achievement}</span>
+                              <span className="text-base text-justify leading-relaxed">{achievement}</span>
                             </li>
                           ))}
                         </ul>
