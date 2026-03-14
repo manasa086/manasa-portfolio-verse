@@ -1,58 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,600;0,700;0,800;1,600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    /* Dark portfolio theme - primary dark */
-    --background: 220 26% 8%;
-    --foreground: 220 9% 95%;
+    /* Light, minimal portfolio theme */
+    --background: 210 40% 98%;        /* #F8FAFC slate-50 */
+    --foreground: 222 47% 11%;        /* #0F172A slate-900 */
 
-    --card: 220 26% 10%;
-    --card-foreground: 220 9% 95%;
+    --card: 0 0% 100%;                /* #FFFFFF */
+    --card-foreground: 222 47% 11%;
 
-    --popover: 220 26% 10%;
-    --popover-foreground: 220 9% 95%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
 
-    /* Accent blue for highlights */
-    --primary: 217 91% 60%;
-    --primary-foreground: 220 26% 8%;
+    --primary: 221 83% 53%;           /* #2563EB blue-600 */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 20% 15%;
-    --secondary-foreground: 220 9% 85%;
+    --secondary: 210 40% 96%;         /* #F1F5F9 slate-100 */
+    --secondary-foreground: 215 25% 27%; /* #334155 slate-700 */
 
-    --muted: 220 20% 12%;
-    --muted-foreground: 220 9% 60%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;  /* #64748B slate-500 */
 
-    --accent: 217 91% 60%;
-    --accent-foreground: 220 26% 8%;
+    --accent: 221 100% 97%;           /* #EFF6FF blue-50 */
+    --accent-foreground: 221 83% 43%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 220 9% 95%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 20% 15%;
-    --input: 220 20% 15%;
-    --ring: 217 91% 60%;
+    --border: 214 32% 91%;            /* #E2E8F0 slate-200 */
+    --input: 214 32% 91%;
+    --ring: 221 83% 53%;
 
     --radius: 0.75rem;
 
-    /* Custom design tokens */
-    --gradient-start: 217 91% 60%;
-    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(240 100% 70%));
-    --gradient-card: linear-gradient(145deg, hsl(220 26% 10%), hsl(220 20% 12%));
-    --shadow-primary: 0 10px 40px hsl(217 91% 60% / 0.15);
-    --shadow-card: 0 8px 32px hsl(220 26% 3% / 0.3);
-    --glow-primary: 0 0 20px hsl(217 91% 60% / 0.4);
+    /* Design tokens */
+    --gradient-start: 221 83% 53%;
+    --gradient-primary: linear-gradient(135deg, hsl(221 83% 53%), hsl(258 90% 66%));
+    /* Amber — warm secondary accent for impact/highlight moments */
+    --accent-warm: 38 92% 50%;           /* #F59E0B amber-500 */
+    --accent-warm-light: 47 96% 93%;     /* #FEF3C7 amber-100 */
 
-    /* Light mode overrides for sections that need it */
-    --light-background: 220 15% 97%;
-    --light-foreground: 220 26% 8%;
+    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.04);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.04);
+    --shadow-card: 0 0 0 1px hsl(214 32% 91%), 0 2px 8px rgb(0 0 0 / 0.05);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -64,78 +59,49 @@ All colors MUST be HSL.
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
   * {
     @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground font-inter;
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Smooth scrolling */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
   html {
     scroll-behavior: smooth;
   }
 
-  /* Custom scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 5px;
   }
 
   ::-webkit-scrollbar-track {
-    background: hsl(var(--muted));
+    background: transparent;
   }
 
   ::-webkit-scrollbar-thumb {
     background: hsl(var(--border));
-    border-radius: 4px;
+    border-radius: 3px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--accent));
+    background: hsl(var(--muted-foreground));
   }
 }
 
 @layer components {
-  /* Hero gradient text */
+  /* Gradient text */
   .gradient-text {
     background: var(--gradient-primary);
     -webkit-background-clip: text;
@@ -143,24 +109,59 @@ All colors MUST be HSL.
     background-clip: text;
   }
 
-  /* Glassmorphism card */
-  .glass-card {
-    background: hsl(var(--card) / 0.8);
-    backdrop-filter: blur(12px);
-    border: 1px solid hsl(var(--border) / 0.5);
+  /* Clean card — the primary card style for light theme */
+  .clean-card {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    box-shadow: var(--shadow-sm);
+    border-radius: var(--radius);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
   }
 
-  /* Hover glow effect */
-  .hover-glow {
-    transition: all 0.3s ease;
-  }
-
-  .hover-glow:hover {
-    box-shadow: var(--glow-primary);
+  .clean-card:hover {
+    box-shadow: var(--shadow-md);
     transform: translateY(-2px);
   }
 
-  /* Animated underline */
+  /* Legacy mapping — glass-card used in existing components */
+  .glass-card {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    box-shadow: var(--shadow-sm);
+    border-radius: var(--radius);
+  }
+
+  /* Hover lift */
+  .hover-glow {
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .hover-glow:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  /* Section spacing */
+  .section-padding {
+    @apply py-10 px-6;
+  }
+
+  /* Container */
+  .container-custom {
+    @apply max-w-5xl mx-auto;
+  }
+
+  /* Section eyebrow label */
+  .section-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: hsl(var(--primary));
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Animated underline for nav */
   .animated-underline {
     position: relative;
   }
@@ -169,24 +170,81 @@ All colors MUST be HSL.
     content: '';
     position: absolute;
     width: 0;
-    height: 2px;
+    height: 1.5px;
     bottom: -4px;
     left: 0;
-    background: hsl(var(--primary));
-    transition: width 0.3s ease;
+    background: hsl(var(--foreground));
+    transition: width 0.25s ease;
   }
 
   .animated-underline:hover::after {
     width: 100%;
   }
 
-  /* Section padding */
-  .section-padding {
-    @apply py-20 px-6;
+  /* Amber accent utilities */
+  .text-warm { color: hsl(var(--accent-warm)); }
+  .bg-warm-light { background: hsl(var(--accent-warm-light)); }
+  .border-warm { border-color: hsl(var(--accent-warm) / 0.4); }
+
+  /* Subtle dot grid background for hero */
+  .dot-grid {
+    background-image: radial-gradient(hsl(214 32% 88%) 1px, transparent 1px);
+    background-size: 28px 28px;
   }
 
-  /* Container max width */
-  .container-custom {
-    @apply max-w-6xl mx-auto;
+  /* Accent bar — left border highlight on cards */
+  .accent-bar {
+    border-left: 3px solid hsl(var(--primary));
+  }
+
+  /* ── Animation keyframes ── */
+
+  /* Hero background blobs */
+  @keyframes blob-drift-a {
+    0%, 100% { transform: translate(0,    0)    scale(1);    }
+    40%      { transform: translate(40px, -25px) scale(1.08); }
+    70%      { transform: translate(-15px, 20px) scale(0.96); }
+  }
+  @keyframes blob-drift-b {
+    0%, 100% { transform: translate(0,    0)    scale(1);    }
+    35%      { transform: translate(-30px, 15px) scale(1.04); }
+    65%      { transform: translate(20px, -30px) scale(0.95); }
+  }
+
+  /* Hero proof-point chips gentle float */
+  @keyframes chip-float {
+    0%, 100% { transform: translateY(0);   }
+    50%      { transform: translateY(-5px); }
+  }
+  .chip-float-1 { animation: chip-float 4s ease-in-out infinite; }
+  .chip-float-2 { animation: chip-float 4s ease-in-out 0.8s infinite; }
+  .chip-float-3 { animation: chip-float 4s ease-in-out 1.6s infinite; }
+  .chip-float-4 { animation: chip-float 4s ease-in-out 2.4s infinite; }
+
+  /* Process step connector pulse */
+  @keyframes connector-pulse {
+    0%, 100% { opacity: 0.3; }
+    50%      { opacity: 0.8; }
+  }
+
+  /* Tech badge */
+  .tech-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 10px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    background: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+    border: 1px solid hsl(var(--border));
+    transition: background 0.15s ease;
+  }
+
+  .tech-badge:hover {
+    background: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+    border-color: hsl(221 83% 80%);
   }
 }

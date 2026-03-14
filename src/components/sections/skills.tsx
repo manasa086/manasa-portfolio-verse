@@ -1,151 +1,125 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { 
-  Globe, 
-  Database, 
-  Code, 
-  Cloud, 
-  Layers,
-  Terminal,
-  Palette,
-  Settings
-} from "lucide-react";
+import { Code2, Database, Cloud, Server, Layers, Cpu } from "lucide-react";
 
 interface SkillCategory {
   title: string;
-  icon: any;
+  icon: React.ElementType;
+  iconColor: string;
+  iconBg: string;
   skills: string[];
-  color: string;
 }
 
 const skillCategories: SkillCategory[] = [
   {
-    title: "Frontend Development",
-    icon: Globe,
-    skills: ["HTML5", "CSS3", "JavaScript", "React", "Redux", "jQuery", "Responsive Design"],
-    color: "text-blue-500"
+    title: "Languages & Web",
+    icon: Code2,
+    iconColor: "text-blue-600",
+    iconBg: "bg-blue-50",
+    skills: [
+      "Java", "Python", "JavaScript", "TypeScript",
+      "React", "Redux", "Node.js", "Spring Boot", "HTML5", "CSS",
+    ],
   },
   {
-    title: "Backend Development", 
-    icon: Terminal,
-    skills: ["Node.js", "PHP", "RESTful APIs", "Server Architecture"],
-    color: "text-green-500"
-  },
-  {
-    title: "Databases",
+    title: "Databases & Tools",
     icon: Database,
-    skills: ["MySQL", "MongoDB", "Database Design", "Query Optimization"],
-    color: "text-purple-500"
+    iconColor: "text-violet-600",
+    iconBg: "bg-violet-50",
+    skills: [
+      "MySQL", "PostgreSQL", "MongoDB",
+      "Git", "GitHub", "Postman", "Linux / Unix",
+    ],
   },
   {
-    title: "Programming Languages",
-    icon: Code,
-    skills: ["JavaScript", "Java", "Python", "C", "TypeScript"],
-    color: "text-orange-500"
+    title: "Data & Distributed Systems",
+    icon: Server,
+    iconColor: "text-emerald-600",
+    iconBg: "bg-emerald-50",
+    skills: [
+      "Hadoop", "HDFS", "Hive", "HBase",
+      "Apache Spark", "SparkSQL", "PySpark",
+      "Apache Kafka", "Sqoop",
+    ],
   },
   {
     title: "Cloud & DevOps",
     icon: Cloud,
-    skills: ["AWS", "Git", "GitHub", "Version Control"],
-    color: "text-cyan-500"
+    iconColor: "text-sky-600",
+    iconBg: "bg-sky-50",
+    skills: [
+      "AWS (EC2, S3, Lambda, IAM, VPC)",
+      "GCP (Cloud Run, BigQuery, Dataflow, Composer)",
+      "Azure (Databricks, Data Lake, Data Factory)",
+      "Docker", "Kubernetes", "Jenkins",
+    ],
   },
   {
-    title: "Tools & Frameworks",
-    icon: Settings,
-    skills: ["React", "Redux", "Git", "npm", "VS Code"],
-    color: "text-red-500"
-  }
+    title: "AI & Coding Tools",
+    icon: Cpu,
+    iconColor: "text-rose-600",
+    iconBg: "bg-rose-50",
+    skills: ["Cursor AI", "CodeX", "Claude"],
+  },
+  {
+    title: "Architecture & Patterns",
+    icon: Layers,
+    iconColor: "text-amber-600",
+    iconBg: "bg-amber-50",
+    skills: [
+      "RESTful APIs", "Microservices", "Event-Driven Architecture",
+      "RBAC", "CI/CD", "Agile / Scrum",
+    ],
+  },
 ];
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="section-padding bg-muted/30">
+    <section id="skills" className="section-padding bg-white">
       <div className="container-custom">
-        <div className="text-center mb-16">
-          <Badge variant="outline" className="mb-4">
-            Technical Expertise
-          </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Skills & <span className="gradient-text">Technologies</span>
+        {/* Section header */}
+        <div className="mb-6">
+          <p className="section-label mb-3">Technical Skills</p>
+          <h2
+            className="text-3xl md:text-4xl font-bold text-foreground"
+            style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+          >
+            Skills &amp; Technologies
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Comprehensive skill set spanning full-stack development, 
-            from frontend user interfaces to backend systems and cloud deployment.
+          <p className="mt-3 text-muted-foreground max-w-xl">
+            A comprehensive stack from frontend interfaces to distributed data
+            infrastructure and cloud deployment.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skillCategories.map((category, index) => (
-            <Card key={index} className="glass-card hover-glow group">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
-                    <category.icon className={`h-6 w-6 ${category.color}`} />
-                  </div>
-                  <h3 className="font-semibold text-lg">{category.title}</h3>
+        {/* Skill grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {skillCategories.map((cat) => (
+            <div
+              key={cat.title}
+              className="clean-card rounded-xl p-6 group"
+            >
+              {/* Category header */}
+              <div className="flex items-center gap-3 mb-4">
+                <div className={`p-2.5 rounded-lg ${cat.iconBg} group-hover:scale-110 transition-transform`}>
+                  <cat.icon className={`h-5 w-5 ${cat.iconColor}`} />
                 </div>
-                
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill, skillIndex) => (
-                    <Badge 
-                      key={skillIndex} 
-                      variant="secondary" 
-                      className="text-xs hover:bg-primary/20 transition-colors cursor-default"
-                    >
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+                <h3
+                  className="font-semibold text-foreground text-sm"
+                  style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+                >
+                  {cat.title}
+                </h3>
+              </div>
 
-        {/* Skill Level Indicators */}
-        <div className="mt-16">
-          <h3 className="text-2xl font-bold text-center mb-8">Proficiency Levels</h3>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { skill: "React & JavaScript", level: 95 },
-              { skill: "Node.js & Backend", level: 90 },
-              { skill: "Database Management", level: 85 },
-              { skill: "Cloud & DevOps", level: 65 }
-            ].map((item, index) => (
-              <Card key={index} className="glass-card">
-                <CardContent className="p-6">
-                  <div className="text-center">
-                    <h4 className="font-semibold mb-2">{item.skill}</h4>
-                    <div className="relative w-20 h-20 mx-auto mb-2">
-                      <svg className="w-20 h-20 transform -rotate-90" viewBox="0 0 36 36">
-                        <path
-                          d="M18 2.0845
-                             a 15.9155 15.9155 0 0 1 0 31.831
-                             a 15.9155 15.9155 0 0 1 0 -31.831"
-                          fill="none"
-                          stroke="hsl(var(--border))"
-                          strokeWidth="2"
-                        />
-                        <path
-                          d="M18 2.0845
-                             a 15.9155 15.9155 0 0 1 0 31.831
-                             a 15.9155 15.9155 0 0 1 0 -31.831"
-                          fill="none"
-                          stroke="hsl(var(--primary))"
-                          strokeWidth="2"
-                          strokeDasharray={`${item.level}, 100`}
-                          className="transition-all duration-1000 ease-out"
-                        />
-                      </svg>
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-lg font-bold text-primary">{item.level}%</span>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+              {/* Skills */}
+              <div className="flex flex-wrap gap-1.5">
+                {cat.skills.map((skill) => (
+                  <span key={skill} className="tech-badge">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

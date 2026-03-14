@@ -12,7 +12,6 @@ const navItems = [
   { href: "#about", label: "About" },
   { href: "#experience", label: "Experience" },
   { href: "#skills", label: "Skills" },
-  { href: "#services", label: "Services" },
   { href: "#projects", label: "Projects" },
   { href: "#contact", label: "Contact" },
 ];
@@ -23,9 +22,8 @@ export function Navbar({ className }: NavbarProps) {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -43,51 +41,44 @@ export function Navbar({ className }: NavbarProps) {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-background/95 backdrop-blur-md border-b border-border"
+          ? "bg-white/95 backdrop-blur-sm border-b border-border shadow-sm"
           : "bg-transparent",
         className
       )}
     >
       <div className="container-custom">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <span className="text-xl font-bold gradient-text">
-              Manasa Somisetty
-            </span>
-          </div>
-
           {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="flex items-center space-x-8">
-              {navItems.map((item) => (
-                <button
-                  key={item.href}
-                  onClick={() => scrollToSection(item.href)}
-                  className="text-muted-foreground hover:text-foreground transition-colors animated-underline"
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
+          <div className="hidden md:flex items-center gap-8">
+            {navItems.map((item) => (
+              <button
+                key={item.href}
+                onClick={() => scrollToSection(item.href)}
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors animated-underline"
+              >
+                {item.label}
+              </button>
+            ))}
           </div>
 
-          {/* CTA Button - Desktop */}
+          {/* CTA — Desktop */}
           <div className="hidden md:block">
             <Button
               onClick={() => scrollToSection("#contact")}
-              className="bg-gradient-start hover:bg-gradient-start/90 text-primary-foreground hover-glow"
+              size="sm"
+              className="bg-primary hover:bg-primary/90 text-white rounded-full px-5"
             >
               Let's Connect
             </Button>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile menu toggle */}
           <div className="md:hidden">
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-foreground"
             >
               {isMobileMenuOpen ? (
                 <X className="h-5 w-5" />
@@ -100,23 +91,25 @@ export function Navbar({ className }: NavbarProps) {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-md">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+          <div className="md:hidden bg-white border-t border-border">
+            <div className="px-4 py-4 space-y-1">
               {navItems.map((item) => (
                 <button
                   key={item.href}
                   onClick={() => scrollToSection(item.href)}
-                  className="block px-3 py-2 text-muted-foreground hover:text-foreground transition-colors w-full text-left"
+                  className="block w-full text-left px-3 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary rounded-lg transition-colors"
                 >
                   {item.label}
                 </button>
               ))}
-              <Button
-                onClick={() => scrollToSection("#contact")}
-                className="w-full mt-4 bg-gradient-start hover:bg-gradient-start/90 text-primary-foreground"
-              >
-                Let's Connect
-              </Button>
+              <div className="pt-3 pb-1">
+                <Button
+                  onClick={() => scrollToSection("#contact")}
+                  className="w-full bg-primary hover:bg-primary/90 text-white rounded-full"
+                >
+                  Let's Connect
+                </Button>
+              </div>
             </div>
           </div>
         )}
