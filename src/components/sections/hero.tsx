@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Download, ArrowDown, Mail } from "lucide-react";
+import { ArrowDown, Mail } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 /** Key achievement chips shown below the description to surface impact metrics visually */
@@ -136,17 +136,6 @@ export function HeroSection() {
             >
               View My Work
               <ArrowDown className="ml-2 h-4 w-4" />
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="rounded-full px-8 border-border hover:bg-secondary transition-all"
-              asChild
-            >
-              <a href="/Manasa_resume.pdf" download>
-                <Download className="mr-2 h-4 w-4" />
-                Download Resume
-              </a>
             </Button>
           </div>
 
