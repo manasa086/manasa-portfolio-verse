@@ -446,7 +446,6 @@ const projects: Project[] = [
     },
     technologies: ["Python", "TF-IDF", "LinearSVM", "Gradient Boosting", "Scikit-learn", "NLP"],
     githubUrl: "https://github.com/manasa086/ml-tfidf-gbm-phishing-detector",
-    status: "research",
     animation: <MLPhishingAnimation />,
   },
   {
