@@ -158,7 +158,7 @@ export function ContactSection() {
               </div>
               <p className="text-xs text-emerald-700 leading-relaxed">
                 Actively seeking internships and full-time roles in full-stack,
-                data engineering, or AI. Open to remote and Bay Area positions.
+                data engineering, or AI. Open to remote and United States positions.
               </p>
             </div>
           </div>
