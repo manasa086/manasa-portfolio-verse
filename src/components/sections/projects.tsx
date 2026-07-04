@@ -409,6 +409,7 @@ const projects: Project[] = [
     },
     technologies: ["React", "TypeScript", "Node.js", "Express", "Supabase", "OpenAI API", "Claude API"],
     githubUrl: "https://github.com/manasa086/ClaimPilot",
+    liveUrl: "https://claim-pilot-frontend-gold.vercel.app/",
     status: "live",
     animation: <ClaimPilotAnimation />,
   },
@@ -426,6 +427,7 @@ const projects: Project[] = [
       impact: "Linearizable reads/writes with crash recovery — verified correctness under simulated partitions and node failures.",
     },
     technologies: ["Go", "Raft Consensus", "MapReduce", "Distributed KV Store", "Fault Tolerance"],
+    githubUrl: "https://github.com/manasa086/raft-mapreduce-kvstore",
     status: "academic",
     animation: <DistributedSystemsAnimation />,
   },
@@ -443,6 +445,7 @@ const projects: Project[] = [
       impact: "Identified a recall drop from 98.96% to 89% under AI-generated attacks, then improved recall back to 98% using structural feature-based detection.",
     },
     technologies: ["Python", "TF-IDF", "LinearSVM", "Gradient Boosting", "Scikit-learn", "NLP"],
+    githubUrl: "https://github.com/manasa086/ml-tfidf-gbm-phishing-detector",
     status: "research",
     animation: <MLPhishingAnimation />,
   },
@@ -632,7 +635,7 @@ export function ProjectsSection() {
                       MIT 6.824 Lab Implementation
                     </span>
                   )}
-                  {project.status === "research" && (
+                  {project.status === "research" && !project.githubUrl && (
                     <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs text-muted-foreground bg-secondary rounded-full border border-border">
                       Research in progress — GitHub coming soon
                     </span>
