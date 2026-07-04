@@ -101,76 +101,97 @@ function PhishLensAnimation() {
   );
 }
 
-/** Clarify — text highlight sliding in → semantic tooltip appears */
-function ClarifyAnimation() {
+/** Adaptive RAG — query routed through classifier to direct/single-hop/multi-hop retrieval */
+function AdaptiveRAGAnimation() {
+  const routes = [
+    { y: 22, label: "Direct LLM", delay: "0s" },
+    { y: 52, label: "Single-Hop", delay: "1.1s" },
+    { y: 82, label: "Multi-Hop", delay: "2.2s" },
+  ];
+
   return (
     <svg width="200" height="120" viewBox="0 0 200 120" fill="none">
       <style>{`
-        @keyframes cl-hi {
-          0%,18%  { width: 0; }
-          38%,72% { width: 88px; }
-          90%,100%{ width: 0; }
+        @keyframes rag-pulse {
+          0%,100% { opacity: 0.3; }
+          50%      { opacity: 1; }
         }
-        @keyframes cl-tip {
-          0%,40%  { opacity: 0; transform: translateY(7px); }
-          58%,83% { opacity: 1; transform: translateY(0); }
-          96%,100%{ opacity: 0; }
-        }
-        @keyframes cl-cur {
-          0%,49%  { opacity: 1; }
-          50%,100%{ opacity: 0; }
-        }
-        .cl-hi  { animation: cl-hi  4s ease-in-out infinite; }
-        .cl-tip { animation: cl-tip 4s ease-in-out infinite; }
-        .cl-cur { animation: cl-cur 0.9s step-end infinite; }
+        .rag-route { animation: rag-pulse 3.3s ease-in-out infinite; }
       `}</style>
 
-      {/* ── Browser window ── */}
-      <rect x="5" y="5" width="190" height="110" rx="7"
-        fill="#f0fdf4" stroke="#059669" strokeWidth="1.5"/>
-      {/* Chrome bar */}
-      <rect x="5" y="5" width="190" height="20" rx="7"
-        fill="#059669" fillOpacity="0.1"/>
-      <circle cx="18" cy="15" r="4" fill="#059669" fillOpacity="0.3"/>
-      <circle cx="30" cy="15" r="4" fill="#059669" fillOpacity="0.3"/>
-      <circle cx="42" cy="15" r="4" fill="#059669" fillOpacity="0.3"/>
-      {/* URL bar */}
-      <rect x="55" y="9" width="110" height="12" rx="6"
-        fill="#059669" fillOpacity="0.08"/>
-      <text x="110" y="18.5" textAnchor="middle"
-        fill="#059669" fontSize="6.5" fontFamily="Inter,sans-serif" fillOpacity="0.6">
-        clarify-extension · active
+      {/* ── Query box ── */}
+      <rect x="6" y="42" width="46" height="24" rx="5" fill="#059669" fillOpacity="0.12" stroke="#059669" strokeWidth="1.5"/>
+      <text x="29" y="57.5" textAnchor="middle" fill="#059669" fontSize="8" fontWeight="700" fontFamily="Inter,sans-serif">Query</text>
+
+      {/* ── Classifier diamond ── */}
+      <polygon points="82,38 108,54 82,70 56,54" fill="#05966912" stroke="#059669" strokeWidth="1.5"/>
+      <text x="82" y="57" textAnchor="middle" fill="#059669" fontSize="6.5" fontWeight="700" fontFamily="Inter,sans-serif">Router</text>
+
+      {/* ── Connector: query → classifier ── */}
+      <line x1="52" y1="54" x2="56" y2="54" stroke="#059669" strokeWidth="1.4" strokeOpacity="0.5"/>
+
+      {/* ── Route boxes + connectors ── */}
+      {routes.map((r) => (
+        <g key={r.label} className="rag-route" style={{ animationDelay: r.delay }}>
+          <line x1="108" y1="54" x2="140" y2={r.y + 9} stroke="#059669" strokeWidth="1.3" strokeDasharray="3 2"/>
+          <rect x="140" y={r.y} width="54" height="18" rx="9" fill="#05966918" stroke="#059669" strokeWidth="1.3"/>
+          <text x="167" y={r.y + 12.5} textAnchor="middle" fill="#059669" fontSize="7" fontWeight="700" fontFamily="Inter,sans-serif">{r.label}</text>
+        </g>
+      ))}
+
+      {/* ── Fallback label ── */}
+      <text x="82" y="110" textAnchor="middle" fill="#059669" fontSize="7.5" fontFamily="Inter,sans-serif" fillOpacity="0.55" fontWeight="600">
+        + MCP web search fallback
       </text>
+    </svg>
+  );
+}
 
-      {/* ── Document text lines ── */}
-      <rect x="14" y="32" width="168" height="8" rx="2" fill="#059669" fillOpacity="0.1"/>
+/** ClaimPilot — incident evidence uploaded → AI processing → insurance-ready PDF packet */
+function ClaimPilotAnimation() {
+  return (
+    <svg width="200" height="120" viewBox="0 0 200 120" fill="none">
+      <style>{`
+        @keyframes cp-upload {
+          0%,10%   { transform: translateX(0); opacity: 1; }
+          40%,48%  { transform: translateX(48px); opacity: 1; }
+          58%,100% { transform: translateX(48px); opacity: 0; }
+        }
+        @keyframes cp-ring {
+          0%,100% { r: 20; }
+          50%     { r: 23; }
+        }
+        @keyframes cp-pdf {
+          0%,55%  { opacity: 0; transform: translateY(6px); }
+          70%,92% { opacity: 1; transform: translateY(0); }
+          100%    { opacity: 0; }
+        }
+        .cp-upload { animation: cp-upload 3.6s ease-in-out infinite; }
+        .cp-ring   { animation: cp-ring   3.6s ease-in-out infinite; }
+        .cp-pdf    { animation: cp-pdf    3.6s ease-in-out infinite; }
+      `}</style>
 
-      {/* Line 2 with animated highlight */}
-      <rect x="14" y="45" width="168" height="8" rx="2" fill="#059669" fillOpacity="0.07"/>
-      <rect x="14" y="45" height="8" rx="2" fill="#059669" fillOpacity="0.35" className="cl-hi">
-        <animate attributeName="width" values="0;88;88;0"
-          keyTimes="0;0.35;0.72;1" dur="4s" repeatCount="indefinite"/>
-      </rect>
+      {/* ── Evidence document ── */}
+      <g className="cp-upload">
+        <rect x="10" y="18" width="44" height="56" rx="4" fill="#0ea5e914" stroke="#0ea5e9" strokeWidth="1.5"/>
+        <rect x="18" y="26" width="28" height="6" rx="2" fill="#0ea5e930"/>
+        <rect x="18" y="37" width="28" height="18" rx="3" fill="#0ea5e922"/>
+        <rect x="18" y="59" width="20" height="6" rx="2" fill="#0ea5e926"/>
+      </g>
 
-      <rect x="14" y="58" width="130" height="8" rx="2" fill="#059669" fillOpacity="0.09"/>
-      <rect x="14" y="71" width="155" height="8" rx="2" fill="#059669" fillOpacity="0.1"/>
-      {/* blinking cursor */}
-      <line className="cl-cur" x1="170" y1="71" x2="170" y2="79"
-        stroke="#059669" strokeWidth="1.5"/>
+      {/* ── Arrow ── */}
+      <line x1="82" y1="50" x2="98" y2="50" stroke="#0ea5e9" strokeWidth="1.5" strokeOpacity="0.4" strokeDasharray="3 2"/>
+      <path d="M98 46 L106 50 L98 54" fill="none" stroke="#0ea5e9" strokeWidth="1.5" strokeOpacity="0.5"/>
 
-      {/* ── Semantic tooltip ── */}
-      <g className="cl-tip">
-        <rect x="10" y="87" width="176" height="26" rx="6"
-          fill="white" stroke="#059669" strokeWidth="1.3"
-          style={{filter:"drop-shadow(0 2px 8px rgba(5,150,105,0.18))"}}/>
-        <text x="98" y="99" textAnchor="middle"
-          fill="#059669" fontSize="8" fontWeight="600" fontFamily="Inter,sans-serif">
-          ✦ Semantic context identified
-        </text>
-        <text x="98" y="109" textAnchor="middle"
-          fill="#059669" fontSize="7" fontFamily="Inter,sans-serif" fillOpacity="0.7">
-          Generating real-time interpretation...
-        </text>
+      {/* ── AI processing circle ── */}
+      <circle className="cp-ring" cx="132" cy="50" r="20" fill="#0ea5e912" stroke="#0ea5e9" strokeWidth="1.5"/>
+      <text x="132" y="47" textAnchor="middle" fill="#0ea5e9" fontSize="7" fontWeight="700" fontFamily="Inter,sans-serif">CLAUDE</text>
+      <text x="132" y="57" textAnchor="middle" fill="#0ea5e9" fontSize="7" fontWeight="700" fontFamily="Inter,sans-serif">/OPENAI</text>
+
+      {/* ── PDF result badge ── */}
+      <g className="cp-pdf">
+        <rect x="104" y="82" width="76" height="22" rx="11" fill="#10b98120" stroke="#10b981" strokeWidth="1.4"/>
+        <text x="142" y="96.5" textAnchor="middle" fill="#10b981" fontSize="8.5" fontWeight="700" fontFamily="Inter,sans-serif">📄 Claim Packet Ready</text>
       </g>
     </svg>
   );
@@ -352,133 +373,44 @@ function MLPhishingAnimation() {
   );
 }
 
-/** Online Shopping — product + add-to-cart fly-in animation */
-function ShoppingAnimation() {
-  return (
-    <svg width="200" height="120" viewBox="0 0 200 120" fill="none">
-      <style>{`
-        @keyframes sh-item {
-          0%,15%  { transform: translate(0,0) scale(1); opacity: 1; }
-          45%     { transform: translate(66px,-22px) scale(0.5); opacity: 0.8; }
-          55%,100%{ transform: translate(66px,-22px) scale(0.3); opacity: 0; }
-        }
-        @keyframes sh-badge {
-          0%,48%  { opacity: 0; transform: scale(0.4); }
-          62%,88% { opacity: 1; transform: scale(1); }
-          98%,100%{ opacity: 0; }
-        }
-        @keyframes sh-cart {
-          0%,55%,100%{ transform: scale(1); }
-          62%  { transform: scale(1.18); }
-          70%  { transform: scale(0.92); }
-          78%  { transform: scale(1.06); }
-        }
-        @keyframes sh-btn {
-          0%,20%  { fill: #0ea5e9; }
-          30%,60% { fill: #0284c7; }
-          70%,100%{ fill: #0ea5e9; }
-        }
-        .sh-item  { animation: sh-item  3.5s ease-in-out infinite; }
-        .sh-badge { animation: sh-badge 3.5s ease-in-out infinite; }
-        .sh-cart  { animation: sh-cart  3.5s ease-in-out infinite; }
-        .sh-btn   { animation: sh-btn   3.5s ease-in-out infinite; }
-      `}</style>
-
-      {/* ── Product card ── */}
-      <rect x="8" y="10" width="80" height="95" rx="7"
-        fill="white" stroke="#0ea5e9" strokeWidth="1.5"/>
-      {/* product image area */}
-      <rect x="16" y="18" width="64" height="44" rx="4" fill="#0ea5e925"/>
-      {/* box icon */}
-      <path d="M32 32 L48 26 L64 32 L64 46 L48 52 L32 46 Z"
-        fill="#0ea5e930" stroke="#0ea5e9" strokeWidth="1.4" strokeLinejoin="round"/>
-      <line x1="48" y1="26" x2="48" y2="52" stroke="#0ea5e9" strokeWidth="1" strokeOpacity="0.5"/>
-      <line x1="32" y1="32" x2="64" y2="32" stroke="#0ea5e9" strokeWidth="1" strokeOpacity="0.5"/>
-      {/* product info */}
-      <rect x="16" y="68" width="44" height="7" rx="3" fill="#0ea5e925"/>
-      <rect x="16" y="79" width="30" height="7" rx="3" fill="#0ea5e940"/>
-      {/* price */}
-      <text x="64" y="87" textAnchor="end"
-        fill="#0ea5e9" fontSize="10" fontWeight="700" fontFamily="Inter,sans-serif">$49</text>
-
-      {/* Add to Cart button */}
-      <rect x="14" y="90" width="68" height="10" rx="5" className="sh-btn" fill="#0ea5e9"/>
-      <text x="48" y="98.5" textAnchor="middle"
-        fill="white" fontSize="7" fontWeight="700" fontFamily="Inter,sans-serif">Add to Cart</text>
-
-      {/* ── Flying product item ── */}
-      <g className="sh-item">
-        <rect x="36" y="60" width="24" height="18" rx="3" fill="#0ea5e940" stroke="#0ea5e9" strokeWidth="1.2"/>
-        <path d="M42 66 L48 63 L54 66 L54 73 L48 76 L42 73 Z"
-          fill="#0ea5e960" stroke="#0ea5e9" strokeWidth="1"/>
-      </g>
-
-      {/* ── Cart (right side) ── */}
-      <g className="sh-cart">
-        {/* cart body */}
-        <path d="M108 40 L116 40 L122 68 L154 68 L160 46 L116 46"
-          fill="none" stroke="#0ea5e9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        {/* wheels */}
-        <circle cx="128" cy="76" r="5.5" fill="#0ea5e925" stroke="#0ea5e9" strokeWidth="1.8"/>
-        <circle cx="148" cy="76" r="5.5" fill="#0ea5e925" stroke="#0ea5e9" strokeWidth="1.8"/>
-        {/* handle */}
-        <path d="M108 40 L104 30" stroke="#0ea5e9" strokeWidth="2" strokeLinecap="round"/>
-      </g>
-
-      {/* ── Cart badge counter ── */}
-      <g className="sh-badge">
-        <circle cx="162" cy="36" r="10" fill="#0ea5e9"/>
-        <text x="162" y="40" textAnchor="middle"
-          fill="white" fontSize="10" fontWeight="700" fontFamily="Inter,sans-serif">3</text>
-      </g>
-
-      {/* Label */}
-      <text x="134" y="97" textAnchor="middle"
-        fill="#0ea5e9" fontSize="8" fontFamily="Inter,sans-serif" fillOpacity="0.55" fontWeight="600">
-        React · Redux · Stripe
-      </text>
-    </svg>
-  );
-}
-
 /* ─── Project Data ────────────────────────────────────────────── */
 
 const projects: Project[] = [
   {
     number: "01",
-    title: "PhishLens",
-    subtitle: "Cloud-Native Image Analysis Platform",
-    category: "AI · Full-Stack",
-    headerBg: "bg-gradient-to-br from-violet-50 to-indigo-50",
-    ghostColor: "text-violet-200",
-    categoryColor: "bg-violet-100 text-violet-700 border-violet-200",
-    psi: {
-      problem: "Phishing images evade manual review at scale — organizations lacked automated tools for visual threat detection.",
-      solution: "Full-stack cloud app using Google Vision + Gemini APIs to scan images and generate explainable risk scores, deployed on Cloud Run with Firebase storage.",
-      impact: "Automated image-level phishing detection with real-time risk scoring and a cloud-monitored analytics pipeline.",
-    },
-    technologies: ["React", "Node.js", "Google Vision API", "Gemini API", "Firebase", "Cloud Run", "OAuth"],
-    githubUrl: "https://github.com/manasa086/PhishLens",
-    status: "live",
-    animation: <PhishLensAnimation />,
-  },
-  {
-    number: "02",
-    title: "Clarify",
-    subtitle: "LLM-Powered Semantic Assistant",
-    category: "Browser Extension · AI",
+    title: "Adaptive RAG",
+    subtitle: "Agentic AI Retrieval System",
+    category: "AI · Agentic Retrieval",
     headerBg: "bg-gradient-to-br from-emerald-50 to-teal-50",
     ghostColor: "text-emerald-200",
     categoryColor: "bg-emerald-100 text-emerald-700 border-emerald-200",
     psi: {
-      problem: "Dense web content requires context-switching to external tools for comprehension, breaking reading flow.",
-      solution: "Chrome extension that captures highlighted text + full DOM context and sends structured prompts to an LLM for in-page semantic interpretation.",
-      impact: "Zero-friction, context-aware understanding — real-time interpretations without ever leaving the browser tab.",
+      problem: "A single retrieval strategy can't serve every query — simple lookups and complex multi-fact questions need fundamentally different handling.",
+      solution: "Built a multi-path RAG pipeline with a fine-tuned query classifier routing across direct LLM, single-hop, and iterative multi-hop retrieval, augmented with confidence-scored chunk relevance, agentic sub-question decomposition, and MCP-based web search fallback for out-of-corpus queries.",
+      impact: "Adaptive retrieval across legal and medical document corpora that scales strategy complexity to query difficulty.",
     },
-    technologies: ["JavaScript", "Chrome Extensions API", "DOM Manipulation", "LLM API", "HTML", "CSS"],
-    githubUrl: "https://github.com/manasa086/clarify",
+    technologies: ["LlamaIndex", "ChromaDB", "Claude API", "Python", "MCP"],
+    githubUrl: "https://github.com/manasa086/adaptive-rag-router",
     status: "live",
-    animation: <ClarifyAnimation />,
+    animation: <AdaptiveRAGAnimation />,
+  },
+  {
+    number: "02",
+    title: "ClaimPilot",
+    subtitle: "AI-Powered Insurance Claim Documentation Platform",
+    category: "AI · Full-Stack",
+    headerBg: "bg-gradient-to-br from-sky-50 to-cyan-50",
+    ghostColor: "text-sky-200",
+    categoryColor: "bg-sky-100 text-sky-700 border-sky-200",
+    psi: {
+      problem: "Rideshare and delivery drivers struggle to document incidents thoroughly and quickly enough to file strong insurance claims.",
+      solution: "Built and deployed a full-stack claims assistant using React, TypeScript, Node.js, Express, Supabase, and OpenAI/Claude APIs to help drivers document incidents, upload evidence, and track claim readiness.",
+      impact: "Automated generation of insurance-ready PDF claim packets, reducing the effort needed to file a complete claim.",
+    },
+    technologies: ["React", "TypeScript", "Node.js", "Express", "Supabase", "OpenAI API", "Claude API"],
+    githubUrl: "https://github.com/manasa086/ClaimPilot",
+    status: "live",
+    animation: <ClaimPilotAnimation />,
   },
   {
     number: "03",
@@ -490,7 +422,7 @@ const projects: Project[] = [
     categoryColor: "bg-amber-100 text-amber-700 border-amber-200",
     psi: {
       problem: "Building fault-tolerant distributed systems requires correct consensus and replication even under network partitions and node crashes.",
-      solution: "Implemented MapReduce, Raft consensus (leader election, log replication, membership changes), and a fault-tolerant KV store from scratch in Go.",
+      solution: "Implemented MapReduce, Raft consensus (leader election, log replication), and a fault-tolerant distributed key-value store to ensure consistency and crash recovery.",
       impact: "Linearizable reads/writes with crash recovery — verified correctness under simulated partitions and node failures.",
     },
     technologies: ["Go", "Raft Consensus", "MapReduce", "Distributed KV Store", "Fault Tolerance"],
@@ -507,34 +439,30 @@ const projects: Project[] = [
     categoryColor: "bg-rose-100 text-rose-700 border-rose-200",
     psi: {
       problem: "AI-generated phishing emails increasingly bypass traditional rule-based and ML detection systems.",
-      solution: "Trained TF-IDF + Logistic Regression/SVM classifiers, then systematically evaluated robustness against AI-generated phishing content.",
-      impact: "Identified critical robustness gaps; proposed transformer-based improvements to address AI-generated attack vectors.",
+      solution: "Designed and trained a two-layer ensemble phishing detection system combining TF-IDF + LinearSVM with Gradient Boosting on 13 structural features, evaluated against 200 AI-generated phishing emails.",
+      impact: "Identified a recall drop from 98.96% to 89% under AI-generated attacks, then improved recall back to 98% using structural feature-based detection.",
     },
-    technologies: ["Python", "TF-IDF", "Logistic Regression", "SVM", "Scikit-learn", "NLP"],
+    technologies: ["Python", "TF-IDF", "LinearSVM", "Gradient Boosting", "Scikit-learn", "NLP"],
     status: "research",
     animation: <MLPhishingAnimation />,
   },
   {
     number: "05",
-    title: "Online Shopping App",
-    subtitle: "Full-Stack E-commerce Platform",
-    category: "Full-Stack · E-commerce",
-    headerBg: "bg-gradient-to-br from-sky-50 to-cyan-50",
-    ghostColor: "text-sky-200",
-    categoryColor: "bg-sky-100 text-sky-700 border-sky-200",
+    title: "PhishLens",
+    subtitle: "Cloud-Native Image Analysis Platform",
+    category: "AI · Full-Stack",
+    headerBg: "bg-gradient-to-br from-violet-50 to-indigo-50",
+    ghostColor: "text-violet-200",
+    categoryColor: "bg-violet-100 text-violet-700 border-violet-200",
     psi: {
-      problem: "Building a full e-commerce experience requires coordinating complex frontend state, secure payments, and a scalable backend across multiple services.",
-      solution: "Decoupled React/Redux frontend from a Node.js/MySQL backend, integrated Stripe for payments, and built a role-based admin dashboard.",
-      impact: "Delivered a live, production-grade shopping platform with cart, orders, reviews, and payment processing — deployed on Netlify.",
+      problem: "Phishing images evade manual review at scale — organizations lacked automated tools for visual threat detection.",
+      solution: "Architected and deployed a full-stack ERN application integrating Google Vision and Gemini APIs with OAuth ingestion, Firebase storage, and Cloud Run.",
+      impact: "Automated image-level phishing detection with explainable risk scoring and monitored cloud analytics.",
     },
-    technologies: ["React", "Redux", "Node.js", "MySQL", "MongoDB", "Stripe API"],
-    githubUrls: [
-      { label: "Frontend", url: "https://github.com/manasa086/online-shopping-frontEnd" },
-      { label: "Backend", url: "https://github.com/manasa086/online-shopping-backend" },
-    ],
-    liveUrl: "https://manasa-online-shopping-cart.netlify.app/",
+    technologies: ["React", "Express", "Node.js", "Google Vision API", "Gemini API", "Firebase", "Cloud Run", "OAuth"],
+    githubUrl: "https://github.com/manasa086/PhishLens",
     status: "live",
-    animation: <ShoppingAnimation />,
+    animation: <PhishLensAnimation />,
   },
 ];
 
